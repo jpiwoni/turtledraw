@@ -1,6 +1,6 @@
 # TurtleDraw
 # By: Justina Piwoni
-# Credits: Eric Pogue
+# Credits: Eric Pogue & Carly Shipman
 #
 # All rights reserved.
 
