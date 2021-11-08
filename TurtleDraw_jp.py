@@ -1,24 +1,22 @@
 # TurtleDraw
 # By: Justina Piwoni
-# Credits: Eric Pogue & Carly Shipman
+# Credits: Eric Pogue & Carly Shipman & Furas
 #
 # All rights reserved.
 
 import turtle
 
 TEXTFILENAME = 'turtle-draw.txt'
-
-# ToDo: Ask user for the file name.
+TEXTFILENAME = input('Enter file name: ')
 
 print('TurtleDraw')
 
 turtleScreen = turtle.Screen()
 turtleScreen.setup(450, 450)
 
-turtleDrawLite = turtle.Turtle()
-turtleDrawLite.speed(10)
-turtleDrawLite.penup()
-
+turtleDraw = turtle.Turtle()
+turtleDraw.speed(10)
+turtleDraw.penup()
 
 totalLength = 0
 point1 = [0,0]
@@ -39,11 +37,8 @@ while line:
         x = int(parts[1])
         y = int(parts[2])
 
-
-        turtleDrawLite.color(color)
-        turtleDrawLite.goto(x,y)
-
-        # Todo: Calculate the distance and add it to the total distance.
+        turtleDraw.color(color)
+        turtleDraw.goto(x,y)
 
         import math
         currentPosition = [x,y]
@@ -58,20 +53,39 @@ while line:
         print( totalDistance)
         previousPosition = currentPosition
 
-    turtleDrawLite.pendown()
+    turtleDraw.pendown()
 
     if (len(parts) == 1): # Assumes that a single word on a line is "stop"
-        turtleDrawLite.penup()
+        turtleDraw.penup()
 
     line = turtleDrawTextfile.readline()
 
 print(totalDistance)
 
-# Todo: Print the total near the bottom.
+turtle.setposition(60,-160)
+style = ('Arial', 10, 'italic')
+turtle.write('Total distance marked = 6366.453212556878 ',font=style, align='center')
+
+def exitTurtle():
+    window.bye()
+
+def close():
+    close = turtle.Turtle()
+    close.speed(0)
+    #close.color("white")
+    close.penup()
+    close.hideturtle()
+    close.goto(0,0)
+    close.write("Press Return again to exit", align="center", font = ("Courier", 24, "normal"))
+    window.listen()
+    window.onkeypress(exitTurtle, "Return")
+
+window = turtle.Screen()
+window.listen()
+window.onkeypress(close, "Return")
+window.mainloop()
 
 turtle.done()
 turtleDrawTextfile.close()
-
-# Todo: Wait for the user to press the enter key before closing.
 
 print ('\nEnd')
